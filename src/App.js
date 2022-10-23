@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
-import { Route } from 'react-router-dom';
-import './index.css';
+import { Routes, Route } from 'react-router-dom';
 
-import ContactForm from './components/ContactForm';
 import AdminPage from './pages/AdminPage';
+import Landing from './pages/LandingPage';
 import StudentPage from './pages/StudentPage';
 
-import Landing from './pages/LandingPage';
+import ContactForm from './components/ContactForm';
+import CreateCourse from './components/CreateCourse';
+import DeleteCourse from './components/DeleteCourse';
 import Header from './components/Header';
+
+import './index.css';
+import DisplayArray from './components/DisplayArray';
+import DisplayQuestions from './components/DisplayQuestions';
 
 const App = () => {
   //Baseline courseData as a starting point
@@ -112,59 +117,99 @@ const App = () => {
     },
   ]);
 
+  // Display student questions from ContactForm data
+  const [studentQuestions, setStudentQuestions] = useState([]);
+
+  const submitFormHandler = submittedFormInput => {
+    setStudentQuestions(prevState => {
+      return [...prevState, submittedFormInput];
+    });
+    // console.log(studentQuestions);
+  };
+
+  //Add a course to courseData
+  const addCourseHandler = newCourse => {
+    let repeat = false; //For notifying of duplicate courseCodes
+
+    courseData.forEach(course => {
+      if (
+        course.courseCode.toLowerCase() === newCourse.courseCode.toLowerCase()
+      ) {
+        //Checking for duplicate courseCodes
+        repeat = true;
+        alert('Cannot have two courses with same course code!');
+      }
+    });
+
+    if (!repeat) {
+      setCourseData(prevState => {
+        return [...prevState, newCourse];
+      });
+      alert(
+        'Course ' +
+          newCourse.courseCode +
+          ', ' +
+          newCourse.courseName +
+          ' has been added.'
+      );
+    }
+  };
+
+  //Delete a course from courseData
+  const deleteCourseHandler = courseToDelete => {
+    const course = courseData.find(
+      course => course.courseCode === courseToDelete
+    );
+
+    setCourseData(
+      courseData.filter(course => course.courseCode !== courseToDelete)
+    );
+
+    alert(
+      course.courseCode + ', ' + course.courseName + ' - successfully deleted.'
+    );
+  };
+
   return (
-    <div>
-      <Route exact path="/">
-        <Header />
-        <Landing />
-      </Route>
-      <Route path="/student/view">
-        <Header />
-        <StudentPage />
-        <h1>View Available Courses</h1>
-      </Route>
-      <Route path="/student/search">
-        <Header />
-        <StudentPage />
-        <h1>Search Courses</h1>
-      </Route>
-      <Route path="/student/signup">
-        <Header />
-        <StudentPage />
-        <h1>Sign up</h1>
-      </Route>
-      <Route path="/student/form">
-        <Header />
-        <StudentPage />
-        <h1>Send Questions</h1>
-        <ContactForm />
-      </Route>
-      <Route path="/admin/search">
-        <Header />
-        <AdminPage />
-        <h1>Search Courses</h1>
-      </Route>
-      <Route path="/admin/add">
-        <Header />
-        <AdminPage />
-        <h1>Add Courses</h1>
-      </Route>
-      <Route path="/admin/delete">
-        <Header />
-        <AdminPage />
-        <h1>Delete Courses</h1>
-      </Route>
-      <Route path="/admin/registered-students">
-        <Header />
-        <AdminPage />
-        <h1>List of Registered Students for Different Programs</h1>
-      </Route>
-      <Route path="/admin/questions">
-        <Header />
-        <AdminPage />
-        <h1>Student Questions</h1>
-      </Route>
-    </div>
+    <>
+      <Header />
+      <Routes>
+        <Route index element={<Landing />} />
+        <Route path="student" element={<StudentPage />}>
+          <Route path="view" element />
+          <Route
+            path="search"
+            element={<DisplayArray courseCode={courseData} />}
+          />
+          <Route path="signup" element />
+          <Route
+            path="form"
+            element={<ContactForm onSubmitForm={submitFormHandler} />}
+          />
+        </Route>
+        <Route path="admin" element={<AdminPage />}>
+          <Route path="search" element />
+          <Route
+            path="add"
+            element={<CreateCourse onAddCourse={addCourseHandler} />}
+          />
+          <Route
+            path="delete"
+            element={
+              <DeleteCourse
+                courses={courseData}
+                onDeleteCourse={deleteCourseHandler}
+              />
+            }
+          />
+          <Route path="registered-students" element />
+          <Route
+            path="questions"
+            element={<DisplayQuestions studentQuestions={studentQuestions} />}
+          />
+        </Route>
+      </Routes>
+    </>
   );
 };
 
