@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link, Outlet } from "react-router-dom";
 
 const StudentPage = () => {
   return (
@@ -12,6 +12,7 @@ const StudentPage = () => {
         <Link to="/student/signup"> Sign Up |</Link>
         <Link to="/student/form"> Send Questions </Link>
       </div>
+      <Outlet />
     </div>
   );
 };

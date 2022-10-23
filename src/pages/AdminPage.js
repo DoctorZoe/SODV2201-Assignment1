@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link, Outlet } from "react-router-dom";
 
 const AdminPage = () => {
   return (
@@ -13,6 +13,8 @@ const AdminPage = () => {
         <Link to="/admin/registered-students"> Registered Students |</Link>
         <Link to="/admin/questions"> Questions </Link>
       </div>
+
+      <Outlet />
     </div>
   );
 };
