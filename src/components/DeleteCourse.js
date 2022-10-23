@@ -34,7 +34,7 @@ const DeleteCourse = (props) => {
                 course1.courseTerm
                   .toString()
                   .localeCompare(course2.courseTerm.toString()) ||
-                course1.courseName > course2.courseName
+                course1.courseCode > course2.courseCode
             )
             .map((course) => (
               <option value={course.courseCode} key={course.courseCode}>
