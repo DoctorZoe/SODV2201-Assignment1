@@ -174,7 +174,7 @@ const App = () => {
           <Route path="form" element={<ContactForm />} />
         </Route>
         <Route path="admin" element={<AdminPage />}>
-          <Route path="search" />
+          <Route path="search" element={<DisplayArray courseCode={courseData}/>} />
           <Route
             path="add"
             element={<CreateCourse onAddCourse={addCourseHandler} />}
