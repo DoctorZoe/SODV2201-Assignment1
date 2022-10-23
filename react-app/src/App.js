@@ -138,6 +138,9 @@ function App() {
 
   return (
     <>
+    <div> 
+      <DisplayArray courseCode = {courseData}> </DisplayArray>
+    </div>
       {/* To be added into correct pages later on... */}
       {/* <CreateCourse onAddCourse={addCourseHandler} />
       <DeleteCourse
