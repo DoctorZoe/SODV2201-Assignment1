@@ -51,7 +51,6 @@ const DisplayArray = (props) => {
 };
 
 export default DisplayArray;
-=======
 import React from 'react';
 import { useState } from 'react';
 
