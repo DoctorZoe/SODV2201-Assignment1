@@ -8,10 +8,12 @@ import StudentPage from "./pages/StudentPage";
 import ContactForm from "./components/ContactForm";
 import CreateCourse from "./components/CreateCourse";
 import DeleteCourse from "./components/DeleteCourse";
+import DisplayArray from "./components/DisplayArray";
+import DisplayQuestions from "./components/DisplayQuestions";
 import Header from "./components/Header";
+import StudentRegister from "./components/StudentRegister";
 
 import "./index.css";
-import DisplayArray from "./components/DisplayArray";
 
 const App = () => {
   //Baseline courseData as a starting point
@@ -159,22 +161,35 @@ const App = () => {
     );
   };
 
+  // Display student questions from ContactForm data
+  const [studentQuestions, setStudentQuestions] = useState([]);
+
+  const submitFormHandler = (submittedFormInput) => {
+    setStudentQuestions((prevState) => {
+      return [...prevState, submittedFormInput];
+    });
+    // console.log(studentQuestions);
+  };
+
   return (
     <>
       <Header />
       <Routes>
         <Route index element={<Landing />} />
         <Route path="student" element={<StudentPage />}>
-          <Route path="view" />
+          <Route path="view" element />
           <Route
             path="search"
             element={<DisplayArray courseCode={courseData} />}
           />
-          <Route path="signup" />
-          <Route path="form" element={<ContactForm />} />
+          <Route path="signup" element={<StudentRegister />} />
+          <Route
+            path="form"
+            element={<ContactForm onSubmitForm={submitFormHandler} />}
+          />
         </Route>
         <Route path="admin" element={<AdminPage />}>
-          <Route path="search" element={<DisplayArray courseCode={courseData}/>} />
+          <Route path="search" element />
           <Route
             path="add"
             element={<CreateCourse onAddCourse={addCourseHandler} />}
@@ -188,8 +203,11 @@ const App = () => {
               />
             }
           />
-          <Route path="registered-students" />
-          <Route path="questions" />
+          <Route path="registered-students" element />
+          <Route
+            path="questions"
+            element={<DisplayQuestions studentQuestions={studentQuestions} />}
+          />
         </Route>
       </Routes>
     </>
