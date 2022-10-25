@@ -4,9 +4,6 @@ import { useState } from "react";
 const DisplayArray = (props) => {
   const [searchValue, setSearchValue] = useState("");
   const searchGo = (event) => {
-    const resultArr = [...arr].filter((course) =>
-      course.courseName.includes(searchValue)
-    );
     setSearchValue(event.target.value);
   };
 

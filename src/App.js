@@ -9,6 +9,7 @@ import ContactForm from "./components/ContactForm";
 import CreateCourse from "./components/CreateCourse";
 import DeleteCourse from "./components/DeleteCourse";
 import DisplayArray from "./components/DisplayArray";
+import EnrollCourse from "./components/EnrollCourse";
 import DisplayQuestions from "./components/DisplayQuestions";
 import Header from "./components/Header";
 import StudentRegister from "./components/StudentRegister";
