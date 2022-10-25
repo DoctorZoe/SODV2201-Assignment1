@@ -180,7 +180,8 @@ const App = () => {
           <Route path="view" element />
           <Route
             path="search"
-            element={<DisplayArray courseCode={courseData} />}
+            element={<><DisplayArray courseCode={courseData}/>
+            <EnrollCourse courseCode={courseData}/></>}
           />
           <Route path="signup" element={<StudentRegister />} />
           <Route
