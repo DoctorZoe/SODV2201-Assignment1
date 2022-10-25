@@ -13,6 +13,7 @@ import Header from './components/Header';
 import './index.css';
 import DisplayArray from './components/DisplayArray';
 import DisplayQuestions from './components/DisplayQuestions';
+import StudentRegister from './components/StudentRegister';
 
 const App = () => {
   //Baseline courseData as a starting point
@@ -181,7 +182,7 @@ const App = () => {
             path="search"
             element={<DisplayArray courseCode={courseData} />}
           />
-          <Route path="signup" element />
+          <Route path="signup" element={<StudentRegister />} />
           <Route
             path="form"
             element={<ContactForm onSubmitForm={submitFormHandler} />}
