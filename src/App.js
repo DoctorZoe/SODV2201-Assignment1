@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
 import './index.css';
 
+import DisplayArray from './components/DisplayArray';
 import ContactForm from './components/ContactForm';
 import AdminPage from './pages/AdminPage';
 import StudentPage from './pages/StudentPage';
@@ -127,6 +128,7 @@ const App = () => {
         <Header />
         <StudentPage />
         <h1>Search Courses</h1>
+      <DisplayArray courseCode = {courseData}> </DisplayArray>
       </Route>
       <Route path="/student/signup">
         <Header />
@@ -165,6 +167,7 @@ const App = () => {
         <h1>Student Questions</h1>
       </Route>
     </div>
+    
   );
 };
 

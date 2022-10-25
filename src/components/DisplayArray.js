@@ -14,7 +14,7 @@ var arr = props.courseCode;
 
 //const resultArr = [...arr].sort((x,y) => x.courseName < y.courseName ? -1 : 1,) (for ordering it)
 
-const resultArr = [...arr].filter(course => course.courseName.includes(searchValue))
+const resultArr = [...arr].filter(course => (course.courseName.toLowerCase()).includes(searchValue.toLowerCase()))
 
  return (
     <div>
@@ -28,7 +28,7 @@ const resultArr = [...arr].filter(course => course.courseName.includes(searchVal
             <table>
               <thead>
                 <tr>
-                  <th>Codeee</th>
+                  <th>Code</th>
                   <th>Name</th>
                   <th>Term</th>
                   <th>StartDate</th>
