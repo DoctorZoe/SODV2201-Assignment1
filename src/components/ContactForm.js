@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import './ContactForm.css';
 
-const ContactForm = () => {
+const ContactForm = props => {
   const [firstnameInput, setFirstnameInput] = useState('');
   const [lastnameInput, setLastnameInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
@@ -31,7 +31,8 @@ const ContactForm = () => {
     };
 
     // Log form data to the console
-    console.log(submittedFormData);
+    //console.log(submittedFormData);
+    props.onSubmitForm(submittedFormData);
     setFirstnameInput('');
     setLastnameInput('');
     setEmailInput('');
@@ -40,7 +41,7 @@ const ContactForm = () => {
 
   return (
     <div>
-      <form onSubmit={submitFormHandler}>
+      <form onSubmit={submitFormHandler} className="questions">
         <div className="input-field">
           <label>First Name: </label>
           <input
@@ -74,7 +75,7 @@ const ContactForm = () => {
         <div className="input-field">
           <label>Message: </label>
           <textarea
-            maxLength="1000"
+            maxLength="500"
             value={messageInput}
             onChange={messageChangeHandler}
           />
