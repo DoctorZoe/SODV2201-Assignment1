@@ -171,6 +171,18 @@ const App = () => {
     // console.log(studentQuestions);
   };
 
+  const [registeredStudents, setRegisteredStudents] = useState([]);
+
+  const addNewStudent = (newStudent) => {
+    setRegisteredStudents((prevState) => {
+      return [...prevState, newStudent];
+    });
+    console.log("in app");
+    console.log(registeredStudents)
+  };
+  
+  const [currentStudent, setCurrentStudent] = useState();
+
   return (
     <>
       <Header />
@@ -182,7 +194,7 @@ const App = () => {
             path="search"
             element={<DisplayArray courseCode={courseData} />}
           />
-          <Route path="signup" element={<StudentRegister />} />
+          <Route path="signup" element={<StudentRegister onSignup={addNewStudent} students={registeredStudents} />} />
           <Route
             path="form"
             element={<ContactForm onSubmitForm={submitFormHandler} />}
