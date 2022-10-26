@@ -60,6 +60,14 @@ function StudentRegister(props) {
     } else {
       console.log("Something went wrong with the submit");
     }
+
+    function GenerateNewStudentID() {
+      //#TODO search database to make sure ID is unique
+    
+      //Generate random number between 000000 - 999999
+    
+      return Math.floor(Math.random() * 999999);
+    }    
   }
 
   return (
@@ -168,14 +176,6 @@ function StudentRegister(props) {
       </form>
     </>
   );
-}
-
-function GenerateNewStudentID() {
-  //#TODO search database to make sure ID is unique
-
-  //Generate random number between 000000 - 999999
-
-  return Math.floor(Math.random() * 999999);
 }
 
 export default StudentRegister;
