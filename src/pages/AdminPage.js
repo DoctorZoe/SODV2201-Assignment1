@@ -3,7 +3,7 @@ import { Link, Outlet } from 'react-router-dom';
 
 const AdminPage = () => {
   return (
-    <div>
+    <div className="wrapper">
       <div className="info">
         <h1>Admin Page</h1>
         <br />
