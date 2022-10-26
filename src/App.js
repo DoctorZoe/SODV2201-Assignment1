@@ -9,6 +9,7 @@ import ContactForm from "./components/ContactForm";
 import CreateCourse from "./components/CreateCourse";
 import DeleteCourse from "./components/DeleteCourse";
 import DisplayArray from "./components/DisplayArray";
+import EnrollCourse from "./components/EnrollCourse";
 import DisplayQuestions from "./components/DisplayQuestions";
 import Header from "./components/Header";
 import StudentRegister from "./components/StudentRegister";
@@ -192,7 +193,8 @@ const App = () => {
           <Route path="view" element />
           <Route
             path="search"
-            element={<DisplayArray courseCode={courseData} />}
+            element={<><DisplayArray courseCode={courseData}/>
+            <EnrollCourse courseCode={courseData}/></>}
           />
           <Route path="signup" element={<StudentRegister onSignup={addNewStudent} students={registeredStudents} />} />
           <Route
