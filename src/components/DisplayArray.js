@@ -17,32 +17,34 @@ const DisplayArray = (props) => {
 
   return (
     <div>
-      <label>Search Course: </label>
-      <input type="text" value={searchValue} onChange={searchGo} />
-      <div>
-        <table>
-          <thead>
-            <tr>
-              <th>Code</th>
-              <th>Name</th>
-              <th>Term</th>
-              <th>StartDate</th>
-              <th>StartDate</th>
-            </tr>
-          </thead>
-          <tbody>
-            {resultArr.map((courses) => (
-              <tr key={courses.courseCode}>
-                <td>{courses.courseCode}</td>
-                <td>{courses.courseName}</td>
-                <td>{courses.courseTerm}</td>
-                <td>{courses.courseStartDate}</td>
-                <td>{courses.courseEndDate}</td>
+      <form>
+        <label>Search Course: </label>
+        <input type="text" value={searchValue} onChange={searchGo} />
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Term</th>
+                <th>StartDate</th>
+                <th>StartDate</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {resultArr.map((courses) => (
+                <tr key={courses.courseCode}>
+                  <td>{courses.courseCode}</td>
+                  <td>{courses.courseName}</td>
+                  <td>{courses.courseTerm}</td>
+                  <td>{courses.courseStartDate}</td>
+                  <td>{courses.courseEndDate}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </form>
     </div>
   );
 };
