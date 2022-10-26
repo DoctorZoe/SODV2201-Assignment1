@@ -20,7 +20,7 @@ const Dropdown = () => {
 
   return (
     <nav className="navBar">
-      <button onClick={handleClick}>{menuOpen ? 'Close' : 'Menu'}</button>
+      <button className={`${menuOpen ? 'closeBtn' : 'menuBtn'}`} onClick={handleClick}>{menuOpen ? 'Close' : 'Menu'}</button>
       <ul className={`menuNav ${menuOpen ? ' showMenu' : ''}`}>
         <img src={smallicon} alt="BVC Icon" className="small-icon" />
         <hr />

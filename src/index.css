@@ -35,7 +35,6 @@ body {
 }
 
 .navBar button {
-  position: absolute;
   right: 50px;
   top: 50px;
   z-index: 10;
@@ -63,6 +62,14 @@ body {
 
 .menuNav.showMenu {
   width: 100%;
+}
+
+.menuBtn {
+  position: absolute;
+}
+
+.closeBtn{
+  position: fixed;
 }
 
 ul a {
