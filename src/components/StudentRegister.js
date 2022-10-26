@@ -98,7 +98,7 @@ function StudentRegister(props) {
   }
 
   return (
-    <>
+    <div className="wrapper">
       <form onSubmit={handleSubmit}>
         <h2>Name: </h2>
         <input
@@ -207,7 +207,7 @@ function StudentRegister(props) {
           Register
         </button>
       </form>
-    </>
+    </div>
   );
 }
 

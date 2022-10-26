@@ -17,7 +17,7 @@ const DisplayQuestions = props => {
   // );
 
   return (
-    <div className="questions">
+    <div className="questions wrapper">
       <h1 style={{ fontSize: '2rem' }}>Student Questions:</h1>
       <br />
       <div>

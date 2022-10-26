@@ -52,7 +52,7 @@ const CreateCourse = props => {
   };
 
   return (
-    <div>
+    <div className='wrapper'>
       <form className="font-sizing" onSubmit={submitHandler}>
         <h1 style={{ fontSize: '2rem' }}>Add a Course</h1>
         <br />

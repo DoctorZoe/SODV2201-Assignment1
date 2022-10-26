@@ -75,7 +75,7 @@ const Login = (props) => {
   };
 
   return (
-    <div>
+    <div className="wrapper">
       <form onSubmit={handleSubmit}>
         <button
           type="button"

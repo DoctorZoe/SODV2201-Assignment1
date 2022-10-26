@@ -4,7 +4,7 @@ const DisplayStudent = (props) => {
   const [studentList, setStudentList] = useState(props.students);
 
   return (
-    <div>
+    <div className="wrapper">
       <form>
         <div>
           Course:{" "}

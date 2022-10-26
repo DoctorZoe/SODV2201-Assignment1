@@ -17,7 +17,7 @@ const DeleteCourse = (props) => {
   };
 
   return (
-    <div>
+    <div className="wrapper">
       <form style={{ fontSize: "1.5rem" }} onSubmit={submitHandler}>
         <h1 style={{ fontSize: "2rem" }}>Delete a Course</h1>
         <br />

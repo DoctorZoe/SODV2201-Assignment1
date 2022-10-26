@@ -5,7 +5,7 @@ import Login from '../components/Login';
 
 const Landing = (props) => {
   return (
-    <div>
+    <div className='wrapper'>
       <div className="info">
         <h1>Course Registration</h1> <br />
         <p>

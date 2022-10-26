@@ -7,8 +7,10 @@ const DisplayArray = (props) => {
     setSearchValue(event.target.value);
   };
 
-  var arr = props.courseCode;
+  let currentStudent = props.registeredStudents.find(student => student.username)
 
+  var arr = props.registeredStudents; //placeholder
+  
   //const resultArr = [...arr].sort((x,y) => x.courseName < y.courseName ? -1 : 1,) (for ordering it)
 
   const resultArr = [...arr].filter((course) =>
@@ -19,7 +21,7 @@ const DisplayArray = (props) => {
 
   return (
     <div>
-      <form className="tableContainer">
+      <form>
         <label>Search Course: </label>
         <input type="text" value={searchValue} onChange={searchGo} />
         <div>

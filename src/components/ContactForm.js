@@ -41,7 +41,7 @@ const ContactForm = props => {
   };
 
   return (
-    <div>
+    <div className='wrapper'>
       <form onSubmit={submitFormHandler}>
         <div>
           <h2>First Name: </h2>
