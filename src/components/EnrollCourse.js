@@ -1,9 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 
 const EnrollCourse = (props) => {
   const [selectedCourse, setSelectedCourse] = useState();
   const [enrolledCourses, setEnrolledCourses] = useState([]);
+  const navigate = useNavigate();
 
   const selectedHandler = (event) => {
     setSelectedCourse(event.target.value);
@@ -11,8 +13,12 @@ const EnrollCourse = (props) => {
 
   const enrollCourse = (event) => {
     event.preventDefault();
+    if (props.currentUser.username === "") {
+      alert("You must register first!")
+      return navigate('/student/signup')
+    }
     let newCourse;
-    if (!enrolledCourses.includes(selectedCourse)) {
+    if (!enrolledCourses.some(course => course.courseName === selectedCourse)) {
       props.courseCode.map((course) => {
         if (course.courseName === selectedCourse) {
           newCourse = course;
@@ -20,6 +26,7 @@ const EnrollCourse = (props) => {
       });
       setEnrolledCourses((prevState) => [...prevState, newCourse]);
     }
+    else return alert('You have already registered for this course!');
     props.enrollCourse(newCourse);
     console.log(enrolledCourses);
   };

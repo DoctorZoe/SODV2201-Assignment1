@@ -36,7 +36,7 @@ const DisplayQuestions = props => {
                 <td>{question.firstName}</td>
                 <td>{question.lastName}</td>
                 <td>{question.email}</td>
-                <td>{question.message}</td>
+                <td style={{width: 'auto'}}>{question.message}</td>
               </tr>
             ))}
           </tbody>
