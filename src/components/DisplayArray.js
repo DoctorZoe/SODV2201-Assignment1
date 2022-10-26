@@ -6,7 +6,7 @@ const DisplayArray = (props) => {
   const searchGo = (event) => {
     setSearchValue(event.target.value);
   };
-
+  
   var arr = props.courseCode;
 
   //const resultArr = [...arr].sort((x,y) => x.courseName < y.courseName ? -1 : 1,) (for ordering it)
