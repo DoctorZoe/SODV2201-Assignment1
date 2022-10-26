@@ -2,13 +2,18 @@ import React, { useState } from "react";
 
 const DisplayStudent = (props) => {
   const [studentList, setStudentList] = useState(props.students);
+  const [selectedCourse, setSelectedCourse] = useState("");
+
+  const courseChangeHandler = (event) => {
+    setSelectedCourse(event.target.value);
+  };
 
   return (
     <div className="wrapper">
-      <form>
+      <form className="tableContainer">
         <div>
           Course:{" "}
-          <select>
+          <select onChange={courseChangeHandler}>
             <option value="">Pick a Course</option>
             {props.courses
               .sort(
@@ -40,19 +45,28 @@ const DisplayStudent = (props) => {
             </tr>
           </thead>
           <tbody>
-            {props.students.map((student) => (
-              <tr key={student.studentID}>
-                <td>{student.firstName}</td>
-                <td>{student.lastName}</td>
-                <td>{student.email}</td>
-                <td>{student.phone}</td>
-                <td>{student.dateOfBirth}</td>
-                <td>{student.department}</td>
-                <td>{student.program}</td>
-                <td>{student.studentID}</td>
-                <td>{student.registeredCourses.map(course => course + ', ')}</td>
-              </tr>
-            ))}
+            {studentList
+              .filter((student) =>
+                student.registeredCourses.some(course => course.courseCode === selectedCourse || selectedCourse === "")
+              )
+              .map((student) => (
+                <tr key={student.studentID}>
+                  <td>{student.firstName}</td>
+                  <td>{student.lastName}</td>
+                  <td>{student.email}</td>
+                  <td>{student.phone}</td>
+                  <td>{student.dateOfBirth}</td>
+                  <td>{student.department}</td>
+                  <td>{student.program}</td>
+                  <td>{student.studentID}</td>
+                  <td style={{ whiteSpace: "pre" }}>
+                    {student.registeredCourses.map(
+                      (course) =>
+                        course.courseCode + ": " + course.courseName + "\n"
+                    )}
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </form>
