@@ -18,8 +18,8 @@ const DisplayArray = (props) => {
   );
 
   return (
-    <div className="wrapper">
-      <form>
+    <div>
+      <form className="tableContainer">
         <label>Search Course: </label>
         <input type="text" value={searchValue} onChange={searchGo} />
         <div>
