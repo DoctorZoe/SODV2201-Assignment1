@@ -12,7 +12,7 @@ const DisplayArray = (props) => {
   //const resultArr = [...arr].sort((x,y) => x.courseName < y.courseName ? -1 : 1,) (for ordering it)
 
   const resultArr = [...arr].filter((course) =>
-    course.courseName.toLowerCase().includes(searchValue.toLowerCase())
+    (course.courseName+course.courseCode).toLowerCase().includes(searchValue.toLowerCase())
   );
 
   return (
