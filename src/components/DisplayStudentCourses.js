@@ -7,10 +7,12 @@ const DisplayArray = (props) => {
     setSearchValue(event.target.value);
   };
 
-  let currentStudent = props.registeredStudents.find(student => student.username === props.currentUser.username)
-
-  //var arr = currentStudent.registeredCourses;
-  var arr = [];
+  var currentStudent = props.registeredStudents.find(student => student.username === props.currentUser.username)
+  
+  console.log(props.currentUser.username)
+  
+  if(!props.currentUser.username == "") var arr = currentStudent.registeredCourses;
+  if(props.currentUser.username == "") var arr = [];
 
   const resultArr = [...arr].filter((course) =>
     (course.courseName + course.courseCode)
