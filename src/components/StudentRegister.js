@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 function StudentRegister(props) {
+  const navigate = useNavigate();
   const [student, updateStudentInfo] = useState({
     firstName: "",
     lastName: "",
@@ -59,6 +62,7 @@ function StudentRegister(props) {
         password: "",
         registeredCourses: [],
       });
+      navigate('/')
     } else {
       console.log("Something went wrong with the submit");
     }
