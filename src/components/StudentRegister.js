@@ -12,30 +12,30 @@ function StudentRegister(props) {
     studentID: "",
     username: "",
     password: "",
-    registeredCourses: []
+    registeredCourses: [],
   });
 
   function handleSubmit(event) {
     event.preventDefault();
-    
+
     //Input Validations
     var isValid = true;
-    
+
     props.students.forEach((s) => {
-      console.log('test loop')
-      console.log(s)
+      console.log("test loop");
+      console.log(s);
       if (student.username === s.username) {
         alert("Username is already in use! please enter a different one");
         console.log("Username is already in use! please enter a different one");
         isValid = false;
       }
     });
-  
+
     if (isValid) {
       student.studentID = GenerateNewStudentID();
 
       props.onSignup(student);
-  
+
       console.log(
         "Succesfully registered new student: " +
           student.firstName +
@@ -56,19 +56,45 @@ function StudentRegister(props) {
         program: "",
         studentID: "",
         username: "",
-        password: ""
+        password: "",
       });
     } else {
       console.log("Something went wrong with the submit");
     }
 
     function GenerateNewStudentID() {
-      //#TODO search database to make sure ID is unique
-    
-      //Generate random number between 000000 - 999999
-    
-      return Math.floor(Math.random() * 999999);
-    }    
+      var tempID;
+
+      var isUniqueStudentID = false;
+
+      //This loop runs and keeps generating ids until a unique id is generated.
+
+      while (!isUniqueStudentID) {
+        isUniqueStudentID = true;
+
+        //Generate random number between 000000 - 999999
+
+        tempID = Math.floor(Math.random() * 999999);
+
+        props.students.forEach((s) => {
+          //Debugging logs
+
+          //console.log('test loop')
+
+          //console.log(s)
+
+          if (tempID === s.studentID) {
+            isValid = false;
+
+            console.log("id was repeated: generating new one.");
+          }
+        });
+      }
+
+      console.log("Succesfully generated a new unique id: " + tempID);
+
+      return tempID;
+    }
   }
 
   return (
@@ -129,26 +155,32 @@ function StudentRegister(props) {
 
         <h2>Education Information: </h2>
 
-        <input
-          type="text"
-          placeholder="Enter department"
-          value={student.department}
+        <label>Select Deparment: </label>
+        <select
           required
           onChange={(e) =>
             updateStudentInfo({ ...student, department: e.target.value })
           }
-        />
-        <input
-          type="text"
-          placeholder="Enter program "
-          value={student.program}
+        >
+          <option value=""></option>
+          <option value="IT">IT</option>
+          <option value="Other">Other</option>
+        </select>
+        <label>Select Program: </label>
+        <select
           required
           onChange={(e) =>
             updateStudentInfo({ ...student, program: e.target.value })
           }
-        />
-        <br></br>
-
+        >
+          <option value=""></option>
+          <option value="Diploma(2 Years)">Diploma(2 Years)</option>
+          <option value="Post-Diploma (1 Year)">Post-Diploma (1 Year)</option>
+          <option value="Certificate (3 Months)">Certificate (3 Months)</option>
+          <option value="Certificate (6 Months)">Certificate (6 Months)</option>
+          <option value="Upgrade">Upgrade</option>
+          <option value="Other">Other</option>
+        </select>
         <h2>Account Information: </h2>
         <input
           type="text"

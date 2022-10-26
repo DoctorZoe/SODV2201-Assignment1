@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Login from '../components/Login';
 
-const Landing = () => {
+const Landing = (props) => {
   return (
     <div>
       <div className="info">
@@ -26,7 +26,7 @@ const Landing = () => {
         <br />
         <Link to="/student/view">View Courses</Link>
       </div>
-      <Login />
+      <Login students={props.students} admins={props.admins} updateUser={props.updateUser} />
     </div>
   );
 };
