@@ -7,11 +7,10 @@ const DisplayArray = (props) => {
     setSearchValue(event.target.value);
   };
 
-  let currentStudent = props.registeredStudents.find(student => student.username)
+  let currentStudent = props.registeredStudents.find(student => student.username === props.currentUser.username)
 
-  var arr = props.registeredStudents; //placeholder
-  
-  //const resultArr = [...arr].sort((x,y) => x.courseName < y.courseName ? -1 : 1,) (for ordering it)
+  //var arr = currentStudent.registeredCourses;
+  var arr = [];
 
   const resultArr = [...arr].filter((course) =>
     (course.courseName + course.courseCode)
