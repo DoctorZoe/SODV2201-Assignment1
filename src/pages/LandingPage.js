@@ -21,7 +21,7 @@ const Landing = () => {
           >
             see here
           </a>
-          . Or feel free to <Link to="/admin">contact us</Link>.{' '}
+          . Or feel free to <Link to="/student/form">contact us</Link>.{' '}
         </p>{' '}
         <br />
         <Link to="/student/view">View Courses</Link>
