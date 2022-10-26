@@ -11,13 +11,13 @@ import DeleteCourse from "./components/DeleteCourse";
 import DisplayArray from "./components/DisplayArray";
 import DisplayStudentCourses from "./components/DisplayStudentCourses";
 import DisplayStudent from "./components/DisplayStudents";
-import EnrollCourse from "./components/EnrollCourse";
 import DisplayQuestions from "./components/DisplayQuestions";
+import EnrollCourse from "./components/EnrollCourse";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import StudentRegister from "./components/StudentRegister";
 
 import "./index.css";
-import Footer from "./components/Footer";
 
 const App = () => {
   //Baseline courseData as a starting point
@@ -184,7 +184,20 @@ const App = () => {
     console.log("in app");
     console.log(registeredStudents);
   };
-// eslint-disable-next-line
+
+  const enrollCourseHandler = (enrolledCourses) => {
+    setRegisteredStudents(registeredStudents.map(student => {
+      if (student.username === currentUser.username) {
+        return {...student, registeredCourses: [...student.registeredCourses, enrolledCourses]}
+      }
+      else return {...student}
+    }))
+    console.log("in app")
+    console.log(currentUser.username)
+    console.log(enrolledCourses)
+    console.log(registeredStudents)
+  };
+
   const [registeredAdmins, setRegisteredAdmins] = useState([{username: 'Admin', password: 'password'}]);
 
   const [currentUser, setCurrentUser] = useState({
@@ -199,7 +212,6 @@ const App = () => {
 
   return (
     <>
-      {console.log(currentUser)}
       <Header />
       <Routes>
         <Route
@@ -222,7 +234,7 @@ const App = () => {
             element={
               <>
                 <DisplayArray courseCode={courseData} />
-                <EnrollCourse courseCode={courseData} />
+                <EnrollCourse courseCode={courseData} currentUser={currentUser} students={registeredStudents} enrollCourse={enrollCourseHandler} />
               </>
             }
           />

@@ -43,7 +43,7 @@ const Login = (props) => {
           });
           console.log("Logging in as student");
           //Send to student page
-          navigate("/student/view");
+          navigate("/student/search");
         }
       });
     }

@@ -57,6 +57,7 @@ function StudentRegister(props) {
         studentID: "",
         username: "",
         password: "",
+        registeredCourses: [],
       });
     } else {
       console.log("Something went wrong with the submit");
@@ -158,6 +159,7 @@ function StudentRegister(props) {
         <label>Select Deparment: </label>
         <select
           required
+          value={student.department}
           onChange={(e) =>
             updateStudentInfo({ ...student, department: e.target.value })
           }
@@ -169,6 +171,7 @@ function StudentRegister(props) {
         <label>Select Program: </label>
         <select
           required
+          value={student.program}
           onChange={(e) =>
             updateStudentInfo({ ...student, program: e.target.value })
           }
