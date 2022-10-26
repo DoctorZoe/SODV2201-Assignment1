@@ -9,6 +9,10 @@ body {
   line-height: 1.4;
 }
 
+.wrapper {
+  padding-bottom: 2.5rem;
+}
+
 /* Header */
 
 .nav-area {
@@ -31,7 +35,7 @@ body {
 }
 
 .navBar button {
-  position: fixed;
+  position: absolute;
   right: 50px;
   top: 50px;
   z-index: 10;
@@ -212,7 +216,7 @@ button {
 }
 
 .menu-link:not(:last-child):after {
-  content: '|';
+  content: "|";
   padding-left: 1em;
 }
 

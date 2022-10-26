@@ -19,7 +19,7 @@ const EnrollCourse = (props) => {
   };
 
   return (
-    <div>
+    <div className="wrapper">
       <div>
         <form onSubmit={enrollCourse}>
           <label>Enroll in Course: </label>
