@@ -9,6 +9,7 @@ import ContactForm from "./components/ContactForm";
 import CreateCourse from "./components/CreateCourse";
 import DeleteCourse from "./components/DeleteCourse";
 import DisplayArray from "./components/DisplayArray";
+import DisplayStudentCourses from "./components/DisplayStudentCourses";
 import DisplayStudent from "./components/DisplayStudents";
 import EnrollCourse from "./components/EnrollCourse";
 import DisplayQuestions from "./components/DisplayQuestions";
@@ -183,7 +184,7 @@ const App = () => {
     console.log("in app");
     console.log(registeredStudents);
   };
-
+// eslint-disable-next-line
   const [registeredAdmins, setRegisteredAdmins] = useState([{username: 'Admin', password: 'password'}]);
 
   const [currentUser, setCurrentUser] = useState({
@@ -214,7 +215,7 @@ const App = () => {
         <Route path="student" element={<StudentPage />}>
           <Route
             path="view"
-            element={<DisplayArray courseCode={courseData} />}
+            element={<DisplayStudentCourses currentUser={currentUser} registeredStudents={registeredStudents}/>}
           />
           <Route
             path="search"
