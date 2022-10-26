@@ -8,7 +8,7 @@ const StudentPage = () => {
         <h1>Student/Course Page</h1>
         <br />
         <Link className="menu-link" to="/student/view">
-          View Courses
+          View Enrolled Courses
         </Link>
         <Link className="menu-link" to="/student/search">
           Search Courses
