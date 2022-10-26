@@ -14,33 +14,45 @@ const EnrollCourse = (props) => {
   const enrollCourse = (event) => {
     event.preventDefault();
     if (props.currentUser.username === "") {
-      alert("You must register first!")
-      return navigate('/student/signup')
+      alert("You must register first!");
+      return navigate("/student/signup");
     }
+    if (
+      props.students.some(
+        (student) =>
+          student.username === props.currentUser.username &&
+          student.program === "Upgrade" &&
+          student.registeredCourses.length === 3
+      )
+    )
+      return alert(
+        "You cannot register for more than 3 courses while upgrading"
+      );
     let newCourse;
-    if (!enrolledCourses.some(course => course.courseName === selectedCourse)) {
+    if (
+      !enrolledCourses.some((course) => course.courseName === selectedCourse)
+    ) {
       props.courseCode.map((course) => {
         if (course.courseName === selectedCourse) {
           newCourse = course;
         }
       });
       setEnrolledCourses((prevState) => [...prevState, newCourse]);
-    }
-    else return alert('You have already registered for this course!');
+    } else return alert("You have already registered for this course!");
     props.enrollCourse(newCourse);
     console.log(enrolledCourses);
   };
 
   useEffect(() => {
     let courses;
-      props.students.map((student) => {
-        if (student.username === props.currentUser.username)
-          courses = student.registeredCourses;
-      })
-      if (courses != undefined) {
-        setEnrolledCourses(courses);
-      }
-  },[]);
+    props.students.map((student) => {
+      if (student.username === props.currentUser.username)
+        courses = student.registeredCourses;
+    });
+    if (courses != undefined) {
+      setEnrolledCourses(courses);
+    }
+  }, []);
 
   return (
     <div>
@@ -72,15 +84,23 @@ const EnrollCourse = (props) => {
               </tr>
             </thead>
             <tbody>
-              {enrolledCourses.map((courses) => (
-                <tr key={courses.courseCode}>
-                  <td>{courses.courseCode}</td>
-                  <td>{courses.courseName}</td>
-                  <td>{courses.courseTerm}</td>
-                  <td>{courses.courseStartDate}</td>
-                  <td>{courses.courseEndDate}</td>
-                </tr>
-              ))}
+              {enrolledCourses
+                .sort(
+                  (course1, course2) =>
+                    course1.courseTerm
+                      .toString()
+                      .localeCompare(course2.courseTerm.toString()) ||
+                    course1.courseCode > course2.courseCode
+                )
+                .map((courses) => (
+                  <tr key={courses.courseCode}>
+                    <td>{courses.courseCode}</td>
+                    <td>{courses.courseName}</td>
+                    <td>{courses.courseTerm}</td>
+                    <td>{courses.courseStartDate}</td>
+                    <td>{courses.courseEndDate}</td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </form>
