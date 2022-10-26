@@ -180,3 +180,13 @@ table {
 td {
   padding: 10px 0;
 }
+
+/* CreateCourse */
+.font-sizing {
+  font-size: 1.5rem;
+}
+
+.input-box,
+button {
+  font-size: 1.25rem;
+}

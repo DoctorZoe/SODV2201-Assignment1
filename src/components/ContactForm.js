@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import './ContactForm.css';
 
 const ContactForm = props => {
   const [firstnameInput, setFirstnameInput] = useState('');
@@ -22,6 +21,8 @@ const ContactForm = props => {
   };
   const submitFormHandler = event => {
     event.preventDefault();
+
+    alert('Your message has been sent.');
 
     const submittedFormData = {
       firstName: firstnameInput,

@@ -1,38 +1,36 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import "./CreateCourse.css";
-
-const CreateCourse = (props) => {
+const CreateCourse = props => {
   //All info about a course
-  const [enteredCode, setEnteredCode] = useState("");
-  const [enteredName, setEnteredName] = useState("");
-  const [enteredTerm, setEnteredTerm] = useState("");
-  const [enteredStartDate, setEnteredStartDate] = useState("");
-  const [enteredEndDate, setEnteredEndDate] = useState("");
+  const [enteredCode, setEnteredCode] = useState('');
+  const [enteredName, setEnteredName] = useState('');
+  const [enteredTerm, setEnteredTerm] = useState('');
+  const [enteredStartDate, setEnteredStartDate] = useState('');
+  const [enteredEndDate, setEnteredEndDate] = useState('');
 
   /*** Setting entered values based on onChange events ***/
-  const codeChangeHandler = (event) => {
+  const codeChangeHandler = event => {
     setEnteredCode(event.target.value);
   };
 
-  const nameChangeHandler = (event) => {
+  const nameChangeHandler = event => {
     setEnteredName(event.target.value);
   };
 
-  const termChangeHandler = (event) => {
+  const termChangeHandler = event => {
     setEnteredTerm(event.target.value);
   };
 
-  const startDateChangeHandler = (event) => {
+  const startDateChangeHandler = event => {
     setEnteredStartDate(event.target.value);
   };
 
-  const endDateChangeHandler = (event) => {
+  const endDateChangeHandler = event => {
     setEnteredEndDate(event.target.value);
   };
 
   //Send the newCourse info to be added to parent element
-  const submitHandler = (event) => {
+  const submitHandler = event => {
     event.preventDefault();
 
     const newCourse = {
@@ -46,17 +44,17 @@ const CreateCourse = (props) => {
     props.onAddCourse(newCourse); //Called from parent to pass data
 
     //Reset to default values after form submission
-    setEnteredCode("");
-    setEnteredName("");
-    setEnteredTerm("");
-    setEnteredStartDate("");
-    setEnteredEndDate("");
+    setEnteredCode('');
+    setEnteredName('');
+    setEnteredTerm('');
+    setEnteredStartDate('');
+    setEnteredEndDate('');
   };
 
   return (
     <div>
       <form className="font-sizing" onSubmit={submitHandler}>
-        <h1 style={{ fontSize: "2rem" }}>Add a Course</h1>
+        <h1 style={{ fontSize: '2rem' }}>Add a Course</h1>
         <br />
         <label>
           Course Code
