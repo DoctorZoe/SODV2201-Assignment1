@@ -31,31 +31,7 @@ const EnrollCourse = (props) => {
           </select>
           <button type="submit"> Ok</button>
           <br></br>
-          <br></br>          
-          <label>Currently Enrolled in: </label>
-          <table>
-            <thead>
-              <tr>
-                <th>Code</th>
-                <th>Name</th>
-                <th>Term</th>
-                <th>StartDate</th>
-                <th>StartDate</th>
-              </tr>
-            </thead>
-            <tbody>
-              {enrolledCourses.map((courses) => (
-                <tr key={courses.courseCode}>
-                  <td>{courses.courseCode}</td>
-                  <td>{courses.courseName}</td>
-                  <td>{courses.courseTerm}</td>
-                  <td>{courses.courseStartDate}</td>
-                  <td>{courses.courseEndDate}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          
+          <br></br>                    
         </form>
       </div>
     </div>
