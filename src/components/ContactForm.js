@@ -42,9 +42,9 @@ const ContactForm = props => {
 
   return (
     <div>
-      <form onSubmit={submitFormHandler} className="questions">
-        <div className="input-field">
-          <label>First Name: </label>
+      <form onSubmit={submitFormHandler}>
+        <div>
+          <h2>First Name: </h2>
           <input
             type="text"
             maxLength="30"
@@ -53,8 +53,8 @@ const ContactForm = props => {
             onChange={firstnameChangeHandler}
           />
         </div>
-        <div className="input-field">
-          <label>Last Name: </label>
+        <div>
+          <h2>Last Name: </h2>
           <input
             type="text"
             maxLength="30"
@@ -63,8 +63,8 @@ const ContactForm = props => {
             onChange={lastnameChangeHandler}
           />
         </div>
-        <div className="input-field">
-          <label>Email: </label>
+        <div>
+          <h2>Email: </h2>
           <input
             type="email"
             maxLength="50"
@@ -73,8 +73,8 @@ const ContactForm = props => {
             onChange={emailChangeHandler}
           />
         </div>
-        <div className="input-field">
-          <label>Message: </label>
+        <div>
+          <h2>Message: </h2>
           <textarea
             maxLength="500"
             value={messageInput}

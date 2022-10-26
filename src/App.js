@@ -191,7 +191,10 @@ const App = () => {
       <Routes>
         <Route index element={<Landing />} />
         <Route path="student" element={<StudentPage />}>
-          <Route path="view" element={<DisplayArray courseCode={courseData}/>}/>
+          <Route
+            path="view"
+            element={<DisplayArray courseCode={courseData} />}
+          />
           <Route
             path="search"
             element={
@@ -216,7 +219,10 @@ const App = () => {
           />
         </Route>
         <Route path="admin" element={<AdminPage />}>
-          <Route path="search" element={<DisplayArray courseCode={courseData}/>} />
+          <Route
+            path="search"
+            element={<DisplayArray courseCode={courseData} />}
+          />
           <Route
             path="add"
             element={<CreateCourse onAddCourse={addCourseHandler} />}
