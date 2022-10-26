@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 
-import AdminPage from './pages/AdminPage';
-import Landing from './pages/LandingPage';
-import StudentPage from './pages/StudentPage';
+import AdminPage from "./pages/AdminPage";
+import Landing from "./pages/LandingPage";
+import StudentPage from "./pages/StudentPage";
 
 import ContactForm from "./components/ContactForm";
 import CreateCourse from "./components/CreateCourse";
@@ -15,160 +15,160 @@ import DisplayQuestions from "./components/DisplayQuestions";
 import Header from "./components/Header";
 import StudentRegister from "./components/StudentRegister";
 
-import './index.css';
-import Footer from './components/Footer';
+import "./index.css";
+import Footer from "./components/Footer";
 
 const App = () => {
   //Baseline courseData as a starting point
   const [courseData, setCourseData] = useState([
     {
-      courseCode: 'PM111',
-      courseName: 'Intro to Project Management',
+      courseCode: "PM111",
+      courseName: "Intro to Project Management",
       courseTerm: 1,
-      courseStartDate: '2022-09-06',
-      courseEndDate: '2022-12-16',
+      courseStartDate: "2022-09-06",
+      courseEndDate: "2022-12-16",
     },
     {
-      courseCode: 'PF111',
-      courseName: 'C++ Programming Fundamentals',
+      courseCode: "PF111",
+      courseName: "C++ Programming Fundamentals",
       courseTerm: 1,
-      courseStartDate: '2022-09-06',
-      courseEndDate: '2022-12-16',
+      courseStartDate: "2022-09-06",
+      courseEndDate: "2022-12-16",
     },
     {
-      courseCode: 'CM111',
-      courseName: 'Computer Maintenance',
+      courseCode: "CM111",
+      courseName: "Computer Maintenance",
       courseTerm: 1,
-      courseStartDate: '2022-09-06',
-      courseEndDate: '2022-12-16',
+      courseStartDate: "2022-09-06",
+      courseEndDate: "2022-12-16",
     },
     {
-      courseCode: 'IS111',
-      courseName: 'Information Security',
+      courseCode: "IS111",
+      courseName: "Information Security",
       courseTerm: 1,
-      courseStartDate: '2022-09-06',
-      courseEndDate: '2022-12-16',
+      courseStartDate: "2022-09-06",
+      courseEndDate: "2022-12-16",
     },
     {
-      courseCode: 'NET222',
-      courseName: 'Networking',
+      courseCode: "NET222",
+      courseName: "Networking",
       courseTerm: 2,
-      courseStartDate: '2023-01-09',
-      courseEndDate: '2023-04-21',
+      courseStartDate: "2023-01-09",
+      courseEndDate: "2023-04-21",
     },
     {
-      courseCode: 'WEB222',
-      courseName: 'Web Technology',
+      courseCode: "WEB222",
+      courseName: "Web Technology",
       courseTerm: 2,
-      courseStartDate: '2023-01-09',
-      courseEndDate: '2023-04-21',
+      courseStartDate: "2023-01-09",
+      courseEndDate: "2023-04-21",
     },
     {
-      courseCode: 'PM222',
-      courseName: 'Project Management',
+      courseCode: "PM222",
+      courseName: "Project Management",
       courseTerm: 2,
-      courseStartDate: '2023-01-09',
-      courseEndDate: '2023-04-21',
+      courseStartDate: "2023-01-09",
+      courseEndDate: "2023-04-21",
     },
     {
-      courseCode: 'PM333',
-      courseName: 'Intermediate Project Management',
+      courseCode: "PM333",
+      courseName: "Intermediate Project Management",
       courseTerm: 3,
-      courseStartDate: '2023-10-04',
-      courseEndDate: '2023-12-15',
+      courseStartDate: "2023-10-04",
+      courseEndDate: "2023-12-15",
     },
     {
-      courseCode: 'PF333',
-      courseName: 'Advanced C++ Programming Fundamentals',
+      courseCode: "PF333",
+      courseName: "Advanced C++ Programming Fundamentals",
       courseTerm: 3,
-      courseStartDate: '2023-10-04',
-      courseEndDate: '2023-12-15',
+      courseStartDate: "2023-10-04",
+      courseEndDate: "2023-12-15",
     },
     {
-      courseCode: 'CM333',
-      courseName: 'Advanced Computer Maintenance',
+      courseCode: "CM333",
+      courseName: "Advanced Computer Maintenance",
       courseTerm: 3,
-      courseStartDate: '2023-10-04',
-      courseEndDate: '2023-12-15',
+      courseStartDate: "2023-10-04",
+      courseEndDate: "2023-12-15",
     },
     {
-      courseCode: 'IS333',
-      courseName: 'Advanced Information Security',
+      courseCode: "IS333",
+      courseName: "Advanced Information Security",
       courseTerm: 3,
-      courseStartDate: '2023-10-04',
-      courseEndDate: '2023-12-15',
+      courseStartDate: "2023-10-04",
+      courseEndDate: "2023-12-15",
     },
     {
-      courseCode: 'NET444',
-      courseName: 'Advanced Networking',
+      courseCode: "NET444",
+      courseName: "Advanced Networking",
       courseTerm: 4,
-      courseStartDate: '2024-01-08',
-      courseEndDate: '2024-04-19',
+      courseStartDate: "2024-01-08",
+      courseEndDate: "2024-04-19",
     },
     {
-      courseCode: 'WEB444',
-      courseName: 'Advanced Web Technology',
+      courseCode: "WEB444",
+      courseName: "Advanced Web Technology",
       courseTerm: 4,
-      courseStartDate: '2024-01-08',
-      courseEndDate: '2024-04-19',
+      courseStartDate: "2024-01-08",
+      courseEndDate: "2024-04-19",
     },
     {
-      courseCode: 'PR444',
-      courseName: 'Advanced Project Management',
+      courseCode: "PR444",
+      courseName: "Advanced Project Management",
       courseTerm: 4,
-      courseStartDate: '2024-01-08',
-      courseEndDate: '2024-04-19',
+      courseStartDate: "2024-01-08",
+      courseEndDate: "2024-04-19",
     },
   ]);
 
   //Add a course to courseData
-  const addCourseHandler = newCourse => {
+  const addCourseHandler = (newCourse) => {
     let repeat = false; //For notifying of duplicate courseCodes
 
-    courseData.forEach(course => {
+    courseData.forEach((course) => {
       if (
         course.courseCode.toLowerCase() === newCourse.courseCode.toLowerCase()
       ) {
         //Checking for duplicate courseCodes
         repeat = true;
-        alert('Cannot have two courses with same course code!');
+        alert("Cannot have two courses with same course code!");
       }
     });
 
     if (!repeat) {
-      setCourseData(prevState => {
+      setCourseData((prevState) => {
         return [...prevState, newCourse];
       });
       alert(
-        'Course ' +
+        "Course " +
           newCourse.courseCode +
-          ', ' +
+          ", " +
           newCourse.courseName +
-          ' has been added.'
+          " has been added."
       );
     }
   };
 
   //Delete a course from courseData
-  const deleteCourseHandler = courseToDelete => {
+  const deleteCourseHandler = (courseToDelete) => {
     const course = courseData.find(
-      course => course.courseCode === courseToDelete
+      (course) => course.courseCode === courseToDelete
     );
 
     setCourseData(
-      courseData.filter(course => course.courseCode !== courseToDelete)
+      courseData.filter((course) => course.courseCode !== courseToDelete)
     );
 
     alert(
-      course.courseCode + ', ' + course.courseName + ' - successfully deleted.'
+      course.courseCode + ", " + course.courseName + " - successfully deleted."
     );
   };
 
   // Display student questions from ContactForm data
   const [studentQuestions, setStudentQuestions] = useState([]);
 
-  const submitFormHandler = submittedFormInput => {
-    setStudentQuestions(prevState => {
+  const submitFormHandler = (submittedFormInput) => {
+    setStudentQuestions((prevState) => {
       return [...prevState, submittedFormInput];
     });
     // console.log(studentQuestions);
@@ -176,23 +176,46 @@ const App = () => {
 
   const [registeredStudents, setRegisteredStudents] = useState([]);
 
-  const addNewStudent = newStudent => {
-    setRegisteredStudents(prevState => {
+  const addNewStudent = (newStudent) => {
+    setRegisteredStudents((prevState) => {
       return [...prevState, newStudent];
     });
-    console.log('in app');
+    console.log("in app");
     console.log(registeredStudents);
   };
 
-  const [currentStudent, setCurrentStudent] = useState();
+  const [registeredAdmins, setRegisteredAdmins] = useState([{username: 'Admin', password: 'password'}]);
+
+  const [currentUser, setCurrentUser] = useState({
+    username: "",
+    password: "",
+    profileType: "",
+  });
+
+  const updateUserHandler = (currentUser) => {
+    setCurrentUser(currentUser);
+  };
 
   return (
     <>
+      {console.log(currentUser)}
       <Header />
       <Routes>
-        <Route index element={<Landing />} />
+        <Route
+          index
+          element={
+            <Landing
+              students={registeredStudents}
+              admins={registeredAdmins}
+              updateUser={updateUserHandler}
+            />
+          }
+        />
         <Route path="student" element={<StudentPage />}>
-          <Route path="view" element={<DisplayArray courseCode={courseData}/>}/>
+          <Route
+            path="view"
+            element={<DisplayArray courseCode={courseData} />}
+          />
           <Route
             path="search"
             element={
@@ -217,7 +240,10 @@ const App = () => {
           />
         </Route>
         <Route path="admin" element={<AdminPage />}>
-          <Route path="search" element={<DisplayArray courseCode={courseData}/>} />
+          <Route
+            path="search"
+            element={<DisplayArray courseCode={courseData} />}
+          />
           <Route
             path="add"
             element={<CreateCourse onAddCourse={addCourseHandler} />}
@@ -231,7 +257,15 @@ const App = () => {
               />
             }
           />
-          <Route path="registered-students" element={<DisplayStudent students={registeredStudents} courses={courseData} />} />
+          <Route
+            path="registered-students"
+            element={
+              <DisplayStudent
+                students={registeredStudents}
+                courses={courseData}
+              />
+            }
+          />
           <Route
             path="questions"
             element={<DisplayQuestions studentQuestions={studentQuestions} />}

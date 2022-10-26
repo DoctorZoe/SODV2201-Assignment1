@@ -6,13 +6,15 @@ const DisplayArray = (props) => {
   const searchGo = (event) => {
     setSearchValue(event.target.value);
   };
-  
+
   var arr = props.courseCode;
 
   //const resultArr = [...arr].sort((x,y) => x.courseName < y.courseName ? -1 : 1,) (for ordering it)
 
   const resultArr = [...arr].filter((course) =>
-    (course.courseName+course.courseCode).toLowerCase().includes(searchValue.toLowerCase())
+    (course.courseName + course.courseCode)
+      .toLowerCase()
+      .includes(searchValue.toLowerCase())
   );
 
   return (
@@ -32,15 +34,23 @@ const DisplayArray = (props) => {
               </tr>
             </thead>
             <tbody>
-              {resultArr.map((courses) => (
-                <tr key={courses.courseCode}>
-                  <td>{courses.courseCode}</td>
-                  <td>{courses.courseName}</td>
-                  <td>{courses.courseTerm}</td>
-                  <td>{courses.courseStartDate}</td>
-                  <td>{courses.courseEndDate}</td>
-                </tr>
-              ))}
+              {resultArr
+                .sort(
+                  (course1, course2) =>
+                    course1.courseTerm
+                      .toString()
+                      .localeCompare(course2.courseTerm.toString()) ||
+                    course1.courseCode > course2.courseCode
+                )
+                .map((courses) => (
+                  <tr key={courses.courseCode}>
+                    <td>{courses.courseCode}</td>
+                    <td>{courses.courseName}</td>
+                    <td>{courses.courseTerm}</td>
+                    <td>{courses.courseStartDate}</td>
+                    <td>{courses.courseEndDate}</td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
