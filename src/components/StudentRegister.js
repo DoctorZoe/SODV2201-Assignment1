@@ -11,7 +11,8 @@ function StudentRegister(props) {
     program: "",
     studentID: "",
     username: "",
-    password: ""
+    password: "",
+    registeredCourses: []
   });
 
   function handleSubmit(event) {
