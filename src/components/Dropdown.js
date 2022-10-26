@@ -27,11 +27,19 @@ const Dropdown = () => {
         <NavLink to="/" onClick={closeMenu}>
           Home
         </NavLink>
-        <NavLink to="/student/view" onClick={closeMenu}>
-          Course Registration
+        <NavLink to="/student/search" onClick={closeMenu}>
+          Courses
         </NavLink>
+        <NavLink to="/student/signup" onClick={closeMenu}>
+          Sign Up
+        </NavLink>
+        <NavLink to="/student/form" onClick={closeMenu}>
+          Contact Us
+        </NavLink>
+        <br />
+        <hr />
         <NavLink to="/admin/search" onClick={closeMenu}>
-          Admin (Temp Menu)
+          Admin
         </NavLink>
       </ul>
     </nav>

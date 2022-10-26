@@ -1,0 +1,39 @@
+***** TEAM CONTRIBUTION SHEET *****
+
+BVC Online Course Registration App - SODV2201
+
+Colin From (c.from822@mybvc.ca)
+{
+    - CreateCourse.js
+    - DeleteCourse.js
+    - DisplayStudents.js
+    - Login.js
+    - Routing within App.js
+}
+Gemma Dahl (g.dahl426@mybvc.ca)
+{
+    - Dropdown.js
+    - Header.js
+    - LandingPage.js
+    - majority of index.css
+    - Entire site design
+}
+Pedro Ferreira (p.ferreira302@mybvc.ca)
+{
+    - DisplayArray.js
+    - EnrollCourses.js
+    - DisplayStudentCourse.js
+    - Github repo creation/management
+}
+Peter Kosa (p.kosa089@mybvc.ca)
+{
+    - ContactForm.js
+    - DisplayQuestions.js
+    - Footer.js
+    - AdminPage.js
+    - StudentPage.js
+}
+Sasha Greene (s.greene097@mybvc.ca)
+{
+    - StudentRegister.js
+}
