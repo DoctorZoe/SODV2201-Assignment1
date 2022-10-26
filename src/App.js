@@ -9,6 +9,7 @@ import ContactForm from "./components/ContactForm";
 import CreateCourse from "./components/CreateCourse";
 import DeleteCourse from "./components/DeleteCourse";
 import DisplayArray from "./components/DisplayArray";
+import DisplayStudent from "./components/DisplayStudents";
 import EnrollCourse from "./components/EnrollCourse";
 import DisplayQuestions from "./components/DisplayQuestions";
 import Header from "./components/Header";
@@ -217,7 +218,7 @@ const App = () => {
               />
             }
           />
-          <Route path="registered-students" element />
+          <Route path="registered-students" element={<DisplayStudent students={registeredStudents} courses={courseData} />} />
           <Route
             path="questions"
             element={<DisplayQuestions studentQuestions={studentQuestions} />}
