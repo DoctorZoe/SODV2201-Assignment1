@@ -28,6 +28,9 @@ const App = () => {
       courseTerm: 1,
       courseStartDate: "2022-09-06",
       courseEndDate: "2022-12-16",
+      courseFees: "676.67",
+      courseDescription:
+        "This is a course where we will introduce you to basic Project Management concepts.",
     },
     {
       courseCode: "PF111",
@@ -35,6 +38,9 @@ const App = () => {
       courseTerm: 1,
       courseStartDate: "2022-09-06",
       courseEndDate: "2022-12-16",
+      courseFees: "785.15",
+      courseDescription:
+        "This is a course where we will introduce you to basic C++ Programming fundamentals.",
     },
     {
       courseCode: "CM111",
@@ -42,6 +48,9 @@ const App = () => {
       courseTerm: 1,
       courseStartDate: "2022-09-06",
       courseEndDate: "2022-12-16",
+      courseFees: "457.49",
+      courseDescription:
+        "In this course you will learn about the basics of computer maintenance.",
     },
     {
       courseCode: "IS111",
@@ -49,6 +58,9 @@ const App = () => {
       courseTerm: 1,
       courseStartDate: "2022-09-06",
       courseEndDate: "2022-12-16",
+      courseFees: "647.77",
+      courseDescription:
+        "In this course you will learn about the basics of Information Security.",
     },
     {
       courseCode: "NET222",
@@ -56,6 +68,9 @@ const App = () => {
       courseTerm: 2,
       courseStartDate: "2023-01-09",
       courseEndDate: "2023-04-21",
+      courseFees: "533.66",
+      courseDescription:
+        "In this course you will be introduced to the basics of networking and how to setup a home network.",
     },
     {
       courseCode: "WEB222",
@@ -63,6 +78,9 @@ const App = () => {
       courseTerm: 2,
       courseStartDate: "2023-01-09",
       courseEndDate: "2023-04-21",
+      courseFees: "874.95",
+      courseDescription:
+        "In this course you will learn about the basics of web design and programming.",
     },
     {
       courseCode: "PM222",
@@ -70,6 +88,9 @@ const App = () => {
       courseTerm: 2,
       courseStartDate: "2023-01-09",
       courseEndDate: "2023-04-21",
+      courseFees: "788.87",
+      courseDescription:
+        "In this course you will dive deeper into the many aspects of project management.",
     },
     {
       courseCode: "PM333",
@@ -77,6 +98,9 @@ const App = () => {
       courseTerm: 3,
       courseStartDate: "2023-10-04",
       courseEndDate: "2023-12-15",
+      courseFees: "877.78",
+      courseDescription:
+        "In this course you will study more specific aspects about project management specifically pertaining to software development.",
     },
     {
       courseCode: "PF333",
@@ -84,6 +108,9 @@ const App = () => {
       courseTerm: 3,
       courseStartDate: "2023-10-04",
       courseEndDate: "2023-12-15",
+      courseFees: "966.96",
+      courseDescription:
+        "In this course you will learn more advanced and in-depth features within the C++ programming language.",
     },
     {
       courseCode: "CM333",
@@ -91,6 +118,9 @@ const App = () => {
       courseTerm: 3,
       courseStartDate: "2023-10-04",
       courseEndDate: "2023-12-15",
+      courseFees: "579.89",
+      courseDescription:
+        "This course will go into more specific elements about computer maintenance.",
     },
     {
       courseCode: "IS333",
@@ -98,6 +128,9 @@ const App = () => {
       courseTerm: 3,
       courseStartDate: "2023-10-04",
       courseEndDate: "2023-12-15",
+      courseFees: "745.54",
+      courseDescription:
+        "In this course you will go into more specific detail pertaining to aspects of information security.",
     },
     {
       courseCode: "NET444",
@@ -105,6 +138,9 @@ const App = () => {
       courseTerm: 4,
       courseStartDate: "2024-01-08",
       courseEndDate: "2024-04-19",
+      courseFees: "713.67",
+      courseDescription:
+        "In this course you will learn more advanced networking techniques and learn how to set up a mid-sized office network.",
     },
     {
       courseCode: "WEB444",
@@ -112,6 +148,9 @@ const App = () => {
       courseTerm: 4,
       courseStartDate: "2024-01-08",
       courseEndDate: "2024-04-19",
+      courseFees: "634.50",
+      courseDescription:
+        "In this course you will learn how to create websites using react as well as back-end logic and setting up a server.",
     },
     {
       courseCode: "PR444",
@@ -119,6 +158,9 @@ const App = () => {
       courseTerm: 4,
       courseStartDate: "2024-01-08",
       courseEndDate: "2024-04-19",
+      courseFees: "533.24",
+      courseDescription:
+        "In this course you will learn advanced techniques about project management as well as create your own project idea.",
     },
   ]);
 
@@ -186,19 +228,25 @@ const App = () => {
   };
 
   const enrollCourseHandler = (enrolledCourses) => {
-    setRegisteredStudents(registeredStudents.map(student => {
-      if (student.username === currentUser.username) {
-        return {...student, registeredCourses: [...student.registeredCourses, enrolledCourses]}
-      }
-      else return {...student}
-    }))
-    console.log("in app")
-    console.log(currentUser.username)
-    console.log(enrolledCourses)
-    console.log(registeredStudents)
+    setRegisteredStudents(
+      registeredStudents.map((student) => {
+        if (student.username === currentUser.username) {
+          return {
+            ...student,
+            registeredCourses: [...student.registeredCourses, enrolledCourses],
+          };
+        } else return { ...student };
+      })
+    );
+    console.log("in app");
+    console.log(currentUser.username);
+    console.log(enrolledCourses);
+    console.log(registeredStudents);
   };
 
-  const [registeredAdmins, setRegisteredAdmins] = useState([{username: 'Admin', password: 'password'}]);
+  const [registeredAdmins, setRegisteredAdmins] = useState([
+    { username: "Admin", password: "password" },
+  ]);
 
   const [currentUser, setCurrentUser] = useState({
     username: "",
@@ -227,14 +275,24 @@ const App = () => {
         <Route path="student" element={<StudentPage />}>
           <Route
             path="view"
-            element={<DisplayStudentCourses currentUser={currentUser} registeredStudents={registeredStudents}/>}
+            element={
+              <DisplayStudentCourses
+                currentUser={currentUser}
+                registeredStudents={registeredStudents}
+              />
+            }
           />
           <Route
             path="search"
             element={
               <>
                 <DisplayArray courseCode={courseData} />
-                <EnrollCourse courseCode={courseData} currentUser={currentUser} students={registeredStudents} enrollCourse={enrollCourseHandler} />
+                <EnrollCourse
+                  courseCode={courseData}
+                  currentUser={currentUser}
+                  students={registeredStudents}
+                  enrollCourse={enrollCourseHandler}
+                />
               </>
             }
           />

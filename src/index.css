@@ -52,8 +52,8 @@ body {
   background: white;
   right: 0;
   bottom: 0;
-  height: 50vh;
-  min-height: 500px;
+  height: 40vh; /* Change to 50vh to show admin link */
+  min-height: 400px; /* Change to 500px to show admin link */
   width: 0;
   overflow: hidden;
   max-width: 290px;

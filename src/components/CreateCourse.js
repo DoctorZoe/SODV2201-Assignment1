@@ -1,36 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-const CreateCourse = props => {
+const CreateCourse = (props) => {
   //All info about a course
-  const [enteredCode, setEnteredCode] = useState('');
-  const [enteredName, setEnteredName] = useState('');
-  const [enteredTerm, setEnteredTerm] = useState('');
-  const [enteredStartDate, setEnteredStartDate] = useState('');
-  const [enteredEndDate, setEnteredEndDate] = useState('');
+  const [enteredCode, setEnteredCode] = useState("");
+  const [enteredName, setEnteredName] = useState("");
+  const [enteredTerm, setEnteredTerm] = useState("");
+  const [enteredStartDate, setEnteredStartDate] = useState("");
+  const [enteredEndDate, setEnteredEndDate] = useState("");
+  const [enteredFees, setEnteredFees] = useState("");
+  const [enteredDescription, setEnteredDescription] = useState("");
 
   /*** Setting entered values based on onChange events ***/
-  const codeChangeHandler = event => {
+  const codeChangeHandler = (event) => {
     setEnteredCode(event.target.value);
   };
 
-  const nameChangeHandler = event => {
+  const nameChangeHandler = (event) => {
     setEnteredName(event.target.value);
   };
 
-  const termChangeHandler = event => {
+  const termChangeHandler = (event) => {
     setEnteredTerm(event.target.value);
   };
 
-  const startDateChangeHandler = event => {
+  const startDateChangeHandler = (event) => {
     setEnteredStartDate(event.target.value);
   };
 
-  const endDateChangeHandler = event => {
+  const endDateChangeHandler = (event) => {
     setEnteredEndDate(event.target.value);
   };
 
+  const feesChangeHandler = (event) => {
+    setEnteredFees(event.target.value);
+  };
+
+  const descriptionChangeHandler = (event) => {
+    setEnteredDescription(event.target.value);
+  };
+
   //Send the newCourse info to be added to parent element
-  const submitHandler = event => {
+  const submitHandler = (event) => {
     event.preventDefault();
 
     const newCourse = {
@@ -39,22 +49,26 @@ const CreateCourse = props => {
       courseTerm: enteredTerm,
       courseStartDate: enteredStartDate,
       courseEndDate: enteredEndDate,
+      courseFees: enteredFees,
+      courseDescription: enteredDescription,
     };
 
     props.onAddCourse(newCourse); //Called from parent to pass data
 
     //Reset to default values after form submission
-    setEnteredCode('');
-    setEnteredName('');
-    setEnteredTerm('');
-    setEnteredStartDate('');
-    setEnteredEndDate('');
+    setEnteredCode("");
+    setEnteredName("");
+    setEnteredTerm("");
+    setEnteredStartDate("");
+    setEnteredEndDate("");
+    setEnteredFees("");
+    setEnteredDescription("");
   };
 
   return (
-    <div className='wrapper'>
+    <div className="wrapper">
       <form className="font-sizing" onSubmit={submitHandler}>
-        <h1 style={{ fontSize: '2rem' }}>Add a Course</h1>
+        <h1 style={{ fontSize: "2rem" }}>Add a Course</h1>
         <br />
         <label>
           Course Code
@@ -114,6 +128,26 @@ const CreateCourse = props => {
             className="input-box"
             onChange={endDateChangeHandler}
           ></input>
+        </label>
+        <br />
+        <label>
+          Fees
+          <input
+            type="number"
+            value={enteredFees}
+            required
+            className="input-box"
+            onChange={feesChangeHandler}
+          ></input>
+        </label>
+        <br />
+        <label>
+          Description <br />
+          <textarea
+            value={enteredDescription}
+            required
+            onChange={descriptionChangeHandler}
+          />
         </label>
         <br />
         <button className="submitBtn" type="submit">

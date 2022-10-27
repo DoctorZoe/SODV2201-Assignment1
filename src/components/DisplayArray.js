@@ -17,6 +17,11 @@ const DisplayArray = (props) => {
       .includes(searchValue.toLowerCase())
   );
 
+  const showCourseDescription = (event) => {
+    event.preventDefault();
+    alert(event.target.value)
+  };
+
   return (
     <div>
       <form className="tableContainer">
@@ -29,8 +34,10 @@ const DisplayArray = (props) => {
                 <th>Code</th>
                 <th>Name</th>
                 <th>Term</th>
-                <th>StartDate</th>
-                <th>StartDate</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Fees</th>
+                <th>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -49,6 +56,16 @@ const DisplayArray = (props) => {
                     <td>{courses.courseTerm}</td>
                     <td>{courses.courseStartDate}</td>
                     <td>{courses.courseEndDate}</td>
+                    <td>{courses.courseFees}</td>
+                    <td>
+                      <button
+                        style={{ fontSize: "1rem" }}
+                        value={courses.courseDescription}
+                        onClick={showCourseDescription}
+                      >
+                        Course Desc.
+                      </button>
+                    </td>
                   </tr>
                 ))}
             </tbody>
