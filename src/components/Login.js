@@ -32,6 +32,7 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    let correctInfo = false;
 
     if (btnStudentSelected) {
       props.students.map((student) => {
@@ -44,6 +45,7 @@ const Login = (props) => {
           console.log("Logging in as student");
           //Send to student page
           navigate("/student/search");
+          correctInfo = true;
         }
       });
     }
@@ -59,9 +61,12 @@ const Login = (props) => {
           console.log("Logging in as admin");
           //Send to admin page
           navigate("/admin/search");
+          correctInfo = true;
         }
       });
     }
+
+    if(!correctInfo) alert("Incorrect username/password, please try again")
   };
 
   const displayedText = () => {
@@ -97,6 +102,7 @@ const Login = (props) => {
           <input
             type="text"
             value={username}
+            required
             onChange={updateUsernameHandler}
           />{" "}
           <br />
@@ -106,6 +112,7 @@ const Login = (props) => {
           <input
             type="password"
             value={password}
+            required
             onChange={updatePasswordHandler}
           />{" "}
           <br />
